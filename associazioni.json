@@ -2,14 +2,16 @@
   "schemaVersion": 1,
   "project": "tutorial_C",
   "repository": "https://github.com/pulliver/tutorial_C",
-  "updatedAt": "",
+  "updatedAt": "2026-10-07T20:41:18.174Z",
   "sources": [
     {
       "path": "add_limit.c",
-      "description": "Controlla se la somma di due interi può essere eseguita senza overflow.",
       "code": "\r\n#include <stdio.h>\r\n#include <limits.h>\r\n\r\nint addition_is_safe(int a, int b){\r\n//\treturn (a <= INT_MAX - b);\r\n//\treturn (a >= INT_MIN - b);\r\n\treturn b > 0 ? (a <= INT_MAX - b) : (a >= INT_MIN - b);\r\n}\r\n\r\nint main(int argc, char **argv)\r\n{\r\n\tint a, b;\r\n\tprintf(\"Smallest int: %d\\n\", INT_MIN);\r\n\tprintf(\"Largest int: %d\\n\", INT_MAX);\r\n\t\r\n\ta = 100, b = 50; \r\n\tprintf(\"Risultato atteso: 1 - effettivo: %d di questa somma %d + %d  \\n\", addition_is_safe(a,b), a ,b);\r\n\ta = INT_MAX, b = 1; \r\n\tprintf(\"Risultato atteso: 0 - effettivo: %d di questa somma %d + %d  \\n\", addition_is_safe(a,b), a ,b);\r\n\ta = -100, b = -50; \r\n\tprintf(\"Risultato atteso: 1 - effettivo: %d di questa somma %d + %d  \\n\", addition_is_safe(a,b), a ,b);\r\n\ta = INT_MIN, b = -1; \r\n\tprintf(\"Risultato atteso: 0 - effettivo: %d di questa somma %d + %d  \\n\", addition_is_safe(a,b), a ,b);\r\n\t\r\n\treturn 0;\r\n}\r\n\r\n",
+      "description": "Controlla se la somma di due interi può essere eseguita senza overflow.",
       "sha": "118b56a230060f0142e98dd742f422cd99be7086",
-      "videoIds": [],
+      "videoIds": [
+        "l21_djDlNGk"
+      ],
       "candidateIds": [
         "l21_djDlNGk",
         "74evBC0YTog"
@@ -20,8 +22,8 @@
     },
     {
       "path": "binary_research.c",
-      "description": "Ricerca binaria ricorsiva di un valore in un array ordinato.",
       "code": "#include <stdio.h>\n\nint binary_search(const int a[], int left, int right, int target){\n/*\n\tcaso base\t\t\n\toperazione\t\tl'indice middle\n\tricorsività\t\tmetà target\n */\n\tint middle;\n\tif (left > right){return -1;}\n\tmiddle = left + (right -left) / 2;\n\tif (a[middle] == target) {return middle;}\n\tif (a[middle] < target) {\n\t\tbinary_search(a, middle + 1, right, target); \n\t} else {\n\t\tbinary_search(a, left, middle - 1, target);\n\t}\n\treturn -1;\n}\n\nint main(){\n\tint a[] = {2, 5, 8, 12, 17, 21, 30, 35, 45, 47, 50, 300}, target = 300, length;\n\tlength = sizeof(a) / sizeof(a[0]);\n\tprintf(\"L'elemento %d si trova nella posizione: %d\\n\\n\", target, binary_search(a, 0, length-1, target));\n}\n",
+      "description": "Ricerca binaria ricorsiva di un valore in un array ordinato.",
       "sha": "6b9074ba5f3b278da6e9004385c0e826b3ad0a4a",
       "videoIds": [
         "9AKRY1AN7H4"
@@ -35,8 +37,8 @@
     },
     {
       "path": "c_f_k.c",
-      "description": "Converte temperature da Celsius a Fahrenheit e Kelvin e stampa una tabella.",
       "code": "\r\n#include <stdio.h>\r\n\r\nint main(){\r\n\tint celsius;\r\n\tfloat fahrenheit, kelvin;\r\n\t\r\n\tprintf(\"Celsius\\tFahrenheit\\tKelvin\\n\");\r\n\t\r\n\tfor (celsius = 0; celsius <=100; celsius += 10){\r\n\t\tfahrenheit = (celsius * 9 / 5) + 32;\r\n\t\tkelvin = celsius + 273.15;\r\n\t\t\r\n\t\tprintf(\"%d\\t%.1f\\t%.1f\\n\", celsius, fahrenheit, kelvin);\r\n\t}\r\n}\r\n",
+      "description": "Converte temperature da Celsius a Fahrenheit e Kelvin e stampa una tabella.",
       "sha": "dd002fe0c1000f2f6ac126a42426642b1ec853c4",
       "videoIds": [
         "MuNYNl5i1X4"
@@ -50,8 +52,8 @@
     },
     {
       "path": "clamp.c",
-      "description": "Limita un valore a un intervallo, con varianti if/else e operatori logici.",
       "code": "\r\n#include <stdio.h>\r\n\r\nint clamp2 (int x, int lower, int upper){\r\n\tif (x < lower)\r\n\t\treturn lower;\r\n\telse\r\n\t\tif (x > upper)\r\n\t\t\treturn upper;\r\n\treturn x;\r\n}\r\n\r\nint clamp(int x, int lower, int upper){\r\n\tint r;\r\n\t\r\n\t(((x < lower) && (r = lower)) || ((x > upper) && (r = upper)) ) || (r = x);\r\n\r\n\treturn r;\r\n}\r\n\r\nint main (){\r\n\tconst int start = -2, end = 4;\r\n\tint point = 10;\r\n\t\r\n\tprintf(\"%d\\n\",clamp(point, start, end));\r\n}\r\n",
+      "description": "Limita un valore a un intervallo, con varianti if/else e operatori logici.",
       "sha": "e966ae0bf8347a00ce80007d86738235d1a8c833",
       "videoIds": [],
       "candidateIds": [
@@ -65,8 +67,8 @@
     },
     {
       "path": "clamp2.c",
-      "description": "File vuoto predisposto per una variante dell’esercizio clamp.",
       "code": "\r\n",
+      "description": "File vuoto predisposto per una variante dell’esercizio clamp.",
       "sha": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
       "videoIds": [],
       "candidateIds": [],
@@ -76,8 +78,8 @@
     },
     {
       "path": "digit_repeated_sum.c",
-      "description": "Calcola la radice digitale tramite somma ripetuta delle cifre.",
       "code": "#include <stdio.h>\r\n\r\nint digital_root(int n){\r\n\r\n/*\r\n\tcaso base\t\t\tn < 10 return n\r\n\toperazione\t\t\tn % 10 e somma\r\n\tchiamata ricorsiva\tn / 10 \r\n*/\r\n\tif (n < 10){\r\n\t\treturn n;\r\n\t}\r\n\treturn digital_root(n%10 + n/10);\r\n}\r\n\r\nint dr_courtain(int n){\r\n\treturn (1 + (n-1)%9);\r\n}\r\n\r\nint main(){\r\n\tint numero = 583;\t\t// 7\r\n//\tint numero = 83;\t\t// 2\r\n//\tint numero = 9999;\t\t// 9\r\n//\tint numero = 5;\t\t\t// 5\r\n\t\r\n\tprintf(\"La somma delle cifre di %d è: %d\", numero, digital_root(numero));\r\n//\tprintf(\"La somma delle cifre di %d è: %d\", numero, dr_courtain(numero));\r\n}\r\n",
+      "description": "Calcola la radice digitale tramite somma ripetuta delle cifre.",
       "sha": "ed8cf8171a5c7610b67696ae6b9733f89799facd",
       "videoIds": [
         "v44FojL7V5E"
@@ -91,8 +93,8 @@
     },
     {
       "path": "divisio_remainder.c",
-      "description": "Scompone un totale di secondi in ore, minuti e secondi.",
       "code": "#include <stdio.h>\r\n\r\nint main(){\r\n\tint total_seconds = 7384;\r\n\tint hours = total_seconds / 3600;\r\n\tint minutes = (total_seconds % 3600) / 60;\r\n\tint seconds = total_seconds % 60;\r\n\r\n\tprintf(\"%d\\n%d\\n%d\\n%d\\n\", total_seconds, hours, minutes, seconds );\r\n}\r\n",
+      "description": "Scompone un totale di secondi in ore, minuti e secondi.",
       "sha": "7c0e4aad1257c69264c4850bd08a3e5b01114b48",
       "videoIds": [],
       "candidateIds": [],
@@ -102,8 +104,8 @@
     },
     {
       "path": "ex7week4.c",
-      "description": "Bozza di estrazione dei picchi di un array con strutture e memoria dinamica.",
       "code": "#include <stdio.h>\r\n#include <stdlib.h>\r\n\r\nstruct Peaks {\r\n    int *values;\r\n    int length;\r\n};\r\n\r\nint is_peak(int *a, int n, int i);\r\nint count_peaks(int *a, int n);\r\nstruct Peaks *extract_peaks(int *a, int n);\r\n\r\nint is_peak(int *a, int n, int i) {\r\n\tif (i>0 && i<n) {\r\n\tif (a[i]>a[i-1] && a[i]>a[i+1]) {\r\n\t\treturn 1;\r\n\t}\r\n\telse {\r\n    return 0;\r\n}\r\n}\r\nelse {\r\n\treturn 0;\r\n}\r\n}\r\n\r\nint count_peaks(int *a, int n) {\r\n\tint count = 0;\r\n\tfor (int i=0; i<n; i++) {\r\n\t\tif (is_peak >1) {\r\n\t\t\tcount++;\r\n\t\t}\r\n\t}\r\n    return count;\r\n}\r\n\r\nstruct Peaks  *creaspazio_struct(int n) {\r\n    struct Peaks p;\r\n\r\n    p->values = malloc(n * sizeof(int));\r\n    p->length = n;\r\n  \r\n    return p;\r\n    }\r\n\r\nstruct Peaks *extract_peaks(int *a, int n) {\r\n\t\r\n        if (n <=0) {\r\n\t\treturn NULL;\r\n\t}\r\n\telse {\r\n          struct Peaks ESTRATTO;\r\n    ESTRATTO = creaspazio_struct(count_peaks(a,n));\r\n           for(int i=0; i<n; i++) { if (is_peaks(*a, n, i) = 1) {ESTRATTO->values[i]=a[i];}} \r\n    }\r\n    return NULL;\r\n}\r\n\r\nvoid print_int_array(int *a, int n) {\r\n    int i;\r\n\r\n    printf(\"[\");\r\n    for (i = 0; i < n; i = i + 1) {\r\n        printf(\"%d\", a[i]);\r\n        if (i < n - 1) {\r\n            printf(\", \");\r\n        }\r\n    }\r\n    printf(\"]\");\r\n}\r\n\r\nint main(void) {\r\n    int a[] = {1, 5, 2, 7, 4, 3, 6, 1};\r\n    struct Peaks *result;\r\n\r\n    result = extract_peaks(a, 8);\r\n    if (result == NULL) {\r\n        printf(\"extract_peaks returned NULL\\n\");\r\n        return 0;\r\n    }\r\n\r\n    printf(\"length = %d (expected 3)\\n\", result->length);\r\n    printf(\"values = \");\r\n    print_int_array(result->values, result->length);\r\n    printf(\" (expected [5, 7, 6])\\n\");\r\n\r\n    free(result->values);\r\n    free(result);\r\n    return 0;\r\n}",
+      "description": "Bozza di estrazione dei picchi di un array con strutture e memoria dinamica.",
       "sha": "63aaf35d67f05d0d2ae943842675ad4035a2ada0",
       "videoIds": [],
       "candidateIds": [],
@@ -113,8 +115,8 @@
     },
     {
       "path": "exercise4_copy_array.c",
-      "description": "Bozza di una funzione per allocare una copia di un array.",
       "code": "/*\n * exercise4.c\n * \n *  \n * \n */\n#include <stdio.h>\n\n#include <stdlib.h>\n\nint *copy_array(int *originale[], int n){\n\tint *copy = malloc(n * sizeof(int));\n\tif (copy == NULL) {return NULL;}\n\treturn copy;\n}\n\nint main(int argc, char **argv)\n{\n\tint a[] = {3,-1, 4, 2};\n\tint dimensione;\n\tdimensione = sizeof(a) / sizeof(a[0]);\n//\tcopy_array();\n\tprintf(\"dimensione: %d\", dimensione);\n\treturn 0;\n}\n\n",
+      "description": "Bozza di una funzione per allocare una copia di un array.",
       "sha": "79068b064c95edd1636f0cc5fb83d71223649b93",
       "videoIds": [],
       "candidateIds": [],
@@ -124,8 +126,8 @@
     },
     {
       "path": "gcd.c",
-      "description": "Calcola il massimo comune divisore con una funzione ricorsiva.",
       "code": "\n#include <stdio.h>\n\nint gcd(int a, int b){\n/*\n\tcaso base\t\ta % b == 0 allora return b\n\toperazione\t\t!= 0 allora gcd (b, a%b)\n\tricorsione\t\t\n */\t\n\treturn b ? (a%b) ? gcd( b, (a%b) ) : b : a ;\n//\treturn (a%b) ? gcd(b, a%b) : b;\n}\n\nint main(int argc, char **argv)\n{\n\tint num1 = 17, num2 = 5;\n\tprintf(\"Il MCD di %d e %d è: %d\", num1, num2, gcd(num1, num2));\n\treturn 0;\n}\n\n",
+      "description": "Calcola il massimo comune divisore con una funzione ricorsiva.",
       "sha": "273ccfb431cb282465360e04e500562d6d7c83e2",
       "videoIds": [],
       "candidateIds": [],
@@ -135,8 +137,8 @@
     },
     {
       "path": "helloWorld.c",
-      "description": "Primo programma C: stampa il messaggio Hello World.",
       "code": "#include <stdio.h>\r\n\r\nint main(){\r\n\tprintf(\"Hello World!\");\r\n}\r\n",
+      "description": "Primo programma C: stampa il messaggio Hello World.",
       "sha": "1b74fddd738afbc7b552ceac362a6f681b09b049",
       "videoIds": [
         "m6u-XPzuco0"
@@ -150,8 +152,8 @@
     },
     {
       "path": "inserireX.c",
-      "description": "Inserisce un numero letto da tastiera in un array ordinato.",
       "code": "#include <stdio.h>\r\n\r\nint chiedi_un_numero (void);\r\nvoid print_array (int *a, int n);\r\n\r\nvoid print_array (int *a, int n) {\r\n\tprintf(\"[\");\r\n\tfor (int i=0; i<n; i++) {printf(\"%d\", a[i]);\r\n\t\tif (i<n-1) {printf(\",\");}}\r\n\t\tprintf(\"]\");\r\n\t}\r\n\r\nint  chiedi_un_numero (void)\r\n     { int numero;\r\n\t\t printf(\"scrivi il numero\\n\");\r\n\t\t scanf(\"%d\", &numero);\r\n\t\t return numero;\r\n\t\t }\r\n\r\nint main(int argc, char **argv)\r\n{\r\n\tint x;\r\n\tx= chiedi_un_numero();\r\n\t\r\n\tint v[]= {3,9,11,19,22,56,98};\r\n\tint w[8];\r\n\t\r\n\tint i; \r\n\tfor (i=0; i< 7; i++) {\r\n\t\tif (v[i]<x) {\r\n\t\t\tw[i]=v[i];\r\n\t\t} else {\r\n\t\t\tw[i] = x;  \r\n\t\t\tbreak;}\t\r\n\t}\r\n for (int j=i+1; j<8; j++) {\r\n\t\t\t\tw[j]=v[j-1];\r\n\t\t}\r\n\tprint_array (w, 8);\r\n\t\r\n\treturn 0;\r\n}\r\n\r\n",
+      "description": "Inserisce un numero letto da tastiera in un array ordinato.",
       "sha": "4961cc4af62012b8d629545871cdd76362ec552e",
       "videoIds": [],
       "candidateIds": [],
@@ -161,8 +163,8 @@
     },
     {
       "path": "limit2.c",
-      "description": "Seconda versione del controllo di overflow nella somma di interi.",
       "code": "\r\n\r\n#include <stdio.h>\r\n#include <limits.h>\r\n\r\nint addition_is_safe(int a, int b){\r\n\t return b > 0 ? a <= INT_MAX -b :  a >= INT_MIN -b ;\r\n}\r\n\r\nint main(int argc, char **argv)\r\n{\r\n\tint a, b;\r\n\t\r\n\tprintf(\"Smallest int: %d\\n\", INT_MIN);\r\n\tprintf(\"Largest int: %d\\n\", INT_MAX);\r\n\t\r\n\ta = 100; b = 50;\r\n\tprintf(\"risulatato atteso: 1 - effettivo: %d  di questa operazione: %d + %d\\n\", addition_is_safe(a,b), a, b);\r\n\ta = INT_MAX; b = 1;\r\n\tprintf(\"risulatato atteso: 0 - effettivo: %d  di questa operazione: %d + %d\\n\", addition_is_safe(a,b), a, b);\r\n\ta = -100; b = -50;\r\n\tprintf(\"risulatato atteso: 1 - effettivo: %d  di questa operazione: %d + %d\\n\", addition_is_safe(a,b), a, b);\r\n\ta = INT_MIN; b = -1;\r\n\tprintf(\"risulatato atteso: 0 - effettivo: %d  di questa operazione: %d + %d\\n\", addition_is_safe(a,b), a, b);\r\n\t\r\n\treturn 0;\r\n}\r\n\r\n",
+      "description": "Seconda versione del controllo di overflow nella somma di interi.",
       "sha": "7e4d79b8864b8f09accd87b0417f6cbb42543d23",
       "videoIds": [],
       "candidateIds": [
@@ -175,8 +177,8 @@
     },
     {
       "path": "long_run.c",
-      "description": "Cerca la lunghezza della sequenza contigua crescente più lunga.",
       "code": "#include <stdio.h>\n\nint longest_increasing_run(int a[], int n){\n\tint contatore = 1, max_len = 1;\n\tfor (int i = 0; i < n; i++){\n\t\tif (a[i] < a[i+1]) {\n\t\t\tcontatore++;\n\t\t} else {\n\t\t\tif (contatore > max_len) {\n\t\t\t\tmax_len = contatore;\n\t\t\t}\n\t\t\tcontatore = 1;\n\t\t}\n\t} \n\n/*\ta[i] < a[i+1] -> contatore++ \n\t\taltrimenti\n\t\t\tcontatore = 1\n*/\t\n\treturn max_len;\n}\n\nint main(){\n//\tint a[] = {1, 9, 10, 33, 44, 55};\t//\t6\n//\tint a[] = {2, 4, 7, 3, 5, 6, 8, 1};\t//\t4\n//\tint a[] = {5, 4, 3, 2};\t\t\t\t//\t1\n\tint a[] = {1, 2, 2, 3};\t\t\t\t//\t2\n\tint length;\n\t\n\tlength = sizeof(a) / sizeof(a[0]);\n\tprintf(\"Lunghezza vettore: %d\\n\", length);\n\tfor (int i = 0; i < length; i++){\n\t\tprintf(\"L'elemento a[%d] e' uguale a: %d\\n\", i, a[i]);\n\t}\n\tprintf(\"Il sottoinsieme del vettore è composto da: %d\", longest_increasing_run(a, length));\n}\n",
+      "description": "Cerca la lunghezza della sequenza contigua crescente più lunga.",
       "sha": "9e5339fb91de88ae8c5d3fbc61e40f2efd1664e0",
       "videoIds": [],
       "candidateIds": [
@@ -188,8 +190,8 @@
     },
     {
       "path": "long_run_old.c",
-      "description": "Versione precedente della ricerca della sequenza crescente, con stampe di controllo.",
       "code": "#include <stdio.h>\n\nint longest_increasing_run(int a[], int n){\n\tint start_lr = 0, end_lr = 0;\n\tint longest_range = 1;\n\t\n\tfor (int i = 0; i < n-1; i++){\n\t\tprintf(\"a,i: %d  a,i+1: %d\\t \",a[i], a[i+1]);\n\t\tprintf(\"start: %d end: %d  longest_range: %d\\n---\\n\", start_lr, end_lr, longest_range);\n//\t\t(a[i] < a[i+1]) ? (end_lr = i+1) : (start_lr = end_lr = i+1);\n\t\tif (a[i] < a[i+1]) {\n\t\t\t(end_lr = i+1);\n\t\t\tlongest_range++;\n\t\t} else {\n\t\t\t(longest_range <= (end_lr - start_lr +1 )) ? longest_range = 0 : 0;\n\t\t\t(start_lr = end_lr = i+1);\n\t\t}\n\t}\n\treturn longest_range;  \n}\n\nint main(){\n\tint a[] = {2, 4, 7, 3, 5, 6, 8, 1};\n//\tint a[] = {5, 4, 3, 2};\n//\tint a[] = {1, 2, 2, 3};\n\tint length;\n\t\n\tlength = sizeof(a) / sizeof(a[0]);\n\tprintf(\"Lunghezza vettore: %d\\n\", length);\n\tfor (int i = 0; i < length; i++){\n\t\tprintf(\"L'elemento a[%d] e' uguale a: %d\\n\", i, a[i]);\n\t}\n\n\tprintf(\"the longest increasing run is: %d\", longest_increasing_run(a, length));\n}\n",
+      "description": "Versione precedente della ricerca della sequenza crescente, con stampe di controllo.",
       "sha": "4fd3b3af5fa6701f92a10f9539f0146ee483704a",
       "videoIds": [],
       "candidateIds": [
@@ -201,8 +203,8 @@
     },
     {
       "path": "min_max.c",
-      "description": "Raccoglie minimo, massimo e media di un array in una struttura.",
       "code": "#include <stdio.h>\r\n#include <stdlib.h>\r\n\r\nstruct Statistics {\r\n    int minimum;\r\n    int maximum;\r\n    double average;\r\n};\r\n\r\nint find_min (int *a, int n);\r\nint find_min (int *a, int n) { \r\n\tint minimum = a[0];\r\n\tfor (int i = 1; i < n; i++) {\r\n        if (a[i] < minimum) {\r\n            minimum = a[i];\r\n        }\r\n    }\r\n    return minimum;\r\n}\r\n\t\r\nint find_max (int *a, int n);\r\nint find_max (int *a, int n) { \r\n\tint maximum = a[0];\r\n\tfor (int j = 1; j < n; j++) {\r\n        if (a[j] > maximum) {\r\n            maximum = a[j];\r\n        }\r\n    }\r\n    return maximum;\r\n}\r\n\r\nint sum (int *a, int n);\r\nint sum (int *a, int n) {\r\n    int sum = 0;\r\n    for (int i=0; i<n; i++) {\r\n        sum = sum + a[i];\r\n    }\r\n    return sum;\r\n}\r\n\r\ndouble average (int sum, int n);\r\ndouble average (int sum, int n) {\r\n    double average = (double) sum / n;\r\n    return average;\r\n}\r\n\r\nstruct Statistics *summarize(int *a, int n);\r\nstruct Statistics *summarize(int *a, int n) {\r\n\tif (n<=0) {\r\n        return NULL;\r\n    }\r\n    else { \r\n        struct Statistics *result;\r\n        result=malloc(sizeof(struct Statistics));\r\n        result->minimum = find_min (a, n);\r\n        result->maximum = find_max (a, n);\r\n        result->average = average (sum(a,n), n);\r\n\r\n        return result;\r\n    }\r\n\t\r\n}\r\n\r\nint main(void) {\r\n    int a[] = {4, 7, 1, 8};\r\n    struct Statistics *result;\r\n\r\n    result = summarize(a, 4);\r\n    if (result == NULL) {\r\n        printf(\"summarize returned NULL\\n\");\r\n        return 0;\r\n    }\r\n\r\n    printf(\"Minimum: %d (expected 1)\\n\", result->minimum);\r\n    printf(\"Maximum: %d (expected 8)\\n\", result->maximum);\r\n    printf(\"Average: %.1f (expected 5.0)\\n\", result->average);\r\n\r\n    free(result);\r\n    return 0;\r\n}",
+      "description": "Raccoglie minimo, massimo e media di un array in una struttura.",
       "sha": "a1910db57f9f9a313102a1b29d952b6a8974caab",
       "videoIds": [],
       "candidateIds": [],
@@ -212,8 +214,8 @@
     },
     {
       "path": "puntatore_01.c",
-      "description": "Esempio introduttivo di lettura di un intero con scanf e indirizzo di memoria.",
       "code": "#include <stdio.h>\r\n\r\nint main(int argc, char **argv)\r\n{\r\n\tint x;\r\n\tscanf(\"Inserisci un numero: %d\\n\", &x);\r\n\tprintf(\"Numero letto: %d\\n\", x);\r\n\treturn 0;\r\n}\r\n\r\n",
+      "description": "Esempio introduttivo di lettura di un intero con scanf e indirizzo di memoria.",
       "sha": "0e0661d916704b1d79c2974807251c772822f852",
       "videoIds": [],
       "candidateIds": [],
@@ -223,8 +225,8 @@
     },
     {
       "path": "puntatore_02.c",
-      "description": "Bozza introduttiva alla lettura e alla scrittura tramite un puntatore.",
       "code": "#include <stdio.h>\r\n\r\nint main(int argc, char **argv)\r\n{\r\n\tint x. *p;\r\n\tprintf(\"Inserisci un numero\");\r\n\tscanf(\"%d\", &x);\r\n\tprintf(\"\\n il numero è: %d\",x);\r\n\t*p = 10; \r\n\t\r\n}\r\n\r\n",
+      "description": "Bozza introduttiva alla lettura e alla scrittura tramite un puntatore.",
       "sha": "45a1eb3292c653b8893f49da4030ee049fc763a2",
       "videoIds": [],
       "candidateIds": [],
@@ -234,8 +236,8 @@
     },
     {
       "path": "puntatori/eta_puntatori.c",
-      "description": "Alloca un array di età e lo popola con dati letti da tastiera.",
       "code": "#include <stdio.h>\r\n#include <stdlib.h>\r\nvoid print_array(int *a, int n);\r\n\r\nvoid print_array(int *a, int n) {\r\n    int i;\r\n\r\n    for (i = 0; i < n; i = i + 1) {\r\n        printf(\"%d\", a[i]);\r\n        if (i < n - 1) {\r\n            printf(\", \");\r\n        }\r\n\t}\r\n}\r\n\r\nint main () {\r\n\tint persone;\r\n\tprintf (\"quante persone siete?\\n\");\r\n\tscanf (\"%d\", &persone);\r\n\r\n\tint *age;\r\n\tage = malloc(persone*sizeof(int));\r\n\tfor (int i = 0; i < persone; i++) {\r\n\t  printf (\"quanti anni hanno?\\n\");\r\n\t  scanf (\"%d\", &(*(age+i)));\r\n\t  }\r\n\t\r\nprintf (\"le eta' delle persone sono \\n\");\r\nprint_array (age, persone);\r\n\r\nreturn 0;\r\n}\r\n",
+      "description": "Alloca un array di età e lo popola con dati letti da tastiera.",
       "sha": "6db9b6a91a61f0a30b481779064d40b5cdece409",
       "videoIds": [],
       "candidateIds": [],
@@ -245,8 +247,8 @@
     },
     {
       "path": "puntatori/exercise04_puntatori_copy_array.c",
-      "description": "Alloca una copia di un array con gli elementi in ordine inverso.",
       "code": "/*\r\n * exercise_04.c\r\n * \r\n * \r\n */\r\n\r\n#include <stdlib.h>\r\n#include <stdio.h>\r\n\r\nint *copy_array(int *a, int n){\r\n\tint *copy;\r\n\t\r\n\tcopy = malloc(n * sizeof(int));\r\n\tif (copy == NULL){return NULL;}\r\n\t\r\n\tfor (int i = 0; i < n; i++){\r\n\t\tcopy[n-i-1] = a[i];\r\n\t}\r\n\t\r\n\treturn copy;\r\n}\r\n\r\nint main(int argc, char **argv)\r\n{\r\n\tint orig[] = {3, 7, 1};\r\n\tint *copy;\r\n\tint lenght;\r\n\t\r\n\tlenght = sizeof(orig) / sizeof(orig[0]);\t\r\n\tcopy = copy_array(orig, lenght);\r\n\t\r\n\tprintf(\"dimensione di orig: %d\\n\",lenght );\r\n\tprintf(\"Il vettore ORIGINALE: \");\r\n\tfor(int i = 0; i < lenght; i++){\r\n\t\tprintf(\"%d, \", orig[i]);\r\n\t}\r\n\tprintf(\"\\n\\n\");\r\n\t\r\n\tif (copy == NULL){\r\n\t\tprintf(\"la copia è NULL\\n\");\r\n\t} else{\r\n\t\tprintf(\"la copia NON e' NULL\\n\");\r\n\t}\r\n\r\n\tprintf(\"Il vettore copia: \");\r\n\tfor(int i = 0; i < lenght; i++){\r\n\t\tprintf(\"%d, \", copy[i]);\r\n\t}\r\n\tprintf(\"\\n\\n\");\r\n\tfree(copy);\r\n\r\n\treturn 0;\r\n}\r\n\r\n",
+      "description": "Alloca una copia di un array con gli elementi in ordine inverso.",
       "sha": "ec713e1888550a07d3ecc1a91e89d619ce927f2a",
       "videoIds": [],
       "candidateIds": [],
@@ -256,8 +258,8 @@
     },
     {
       "path": "puntatori/exercise04_puntatori_values_in_range.c",
-      "description": "Copia un array con allocazione dinamica e aritmetica dei puntatori.",
       "code": "/*\r\n * exercise_05.c\r\n * \r\n */\r\n\r\n#include <stdlib.h>\r\n#include <stdio.h>\r\n\r\nint *copy_array(int *a, int n);\r\n\r\nint *copy_array(int *a, int n){\r\n\tint *copy;\r\n\t\r\n\tif (n<=0) { return NULL;}\r\n\tcopy = malloc(n * sizeof(int));\r\n\tif (copy == NULL) { return NULL;}\r\n\tfor (int i=0; i<n; i++){\r\n\t\tcopy[i] = *a;\r\n\t\ta++; \r\n\t}\r\n\treturn (copy);\r\n\r\n/* alternativa con algebra dei puntatori in evidenza\r\n\tfor (int i=0; i<n; i++){\r\n\t\t*copy = *a;\r\n\t\ta++;\r\n\t}\r\n\treturn (copy - n);\n*/\r\n\r\n}\r\n\r\nint main(void) {\r\n    int original[] = {4, 7, 1};\r\n    int *copy;\r\n\r\n    copy = copy_array(original, 3);\r\n    if (copy == NULL) {\r\n        printf(\"copy_array returned NULL\\n\");\r\n        return 0;\r\n    }\r\n\r\n    printf(\"Original first element: %d (expected 4)\\n\", original[0]);\r\n    printf(\"Copy first element: %d (expected 4)\\n\", copy[0]);\r\n\r\n    free(copy);\r\n    return 0;\r\n}\r\n\r\n",
+      "description": "Copia un array con allocazione dinamica e aritmetica dei puntatori.",
       "sha": "a1ea59e5c9dc698aa5c106156c7a513163f067b3",
       "videoIds": [],
       "candidateIds": [],
@@ -267,8 +269,8 @@
     },
     {
       "path": "puntatori/exercise05_puntatori_values_in_range.c",
-      "description": "Bozza per contare ed estrarre valori compresi in un intervallo.",
       "code": "/*\r\n * exercise_05.c\r\n * \r\n */\r\n\r\n#include <stdlib.h>\r\n#include <stdio.h>\r\n\r\nint count_in_range(int *a, int n, int low, int high){\r\n\t\r\n}\r\n\r\nint *extract_in_range(int *a, int n, int low, int high, int k){\r\n\t\r\n}\r\n\r\nint main(int argc, char **argv)\r\n{\r\n\tint a[] = {8, 3, 6, 1, 5, 9};\r\n\tint low, high, k;\r\n\r\n\tprintf(\"\\nInserisci low:\");\r\n\tscanf(\"%d\", &low);\r\n\tprintf(\"\\nInserisci high:\");\r\n\tscanf(\"%d\", &high);\r\n\tprintf(\"Low: %d - high: %d\", low, high);\r\n\t\r\n\t\r\n\t\r\n\t\r\n\treturn 0;\r\n}\r\n\r\n",
+      "description": "Bozza per contare ed estrarre valori compresi in un intervallo.",
       "sha": "041563fb2e3ebb40705f1d292b4fd28d34fcc2c2",
       "videoIds": [],
       "candidateIds": [],
@@ -278,8 +280,8 @@
     },
     {
       "path": "puntatori/exercise_02.c",
-      "description": "Trasla un punto tramite puntatore e calcola la distanza al quadrato dall’origine.",
       "code": "/*\r\n * exercise_02.c\r\n * \r\n * \r\n */\r\n\r\n#include <stdio.h>\r\n\r\nstruct Point {\r\n    double x;\r\n    double y;\r\n};\r\n\r\nvoid translate(struct Point *p, double dx, double dy);\r\ndouble squared_distance_from_origin(struct Point *p);\r\n\r\nvoid translate(struct Point *p, double dx, double dy) {\r\n   (*p).x=(*p).x+dx;\r\n   \r\n   p->y=p->y+dy;\r\n}\r\n\r\ndouble squared_distance_from_origin(struct Point *p) {\r\n   double distance = (p->x)*(p->x)+(p->y)*(p->y);\r\n    return distance;\r\n}\r\n\r\nint main(void) {\r\n    struct Point p;\r\n\r\n    p.x = 2.0;\r\n    p.y = -1.0;\r\n    printf(\"Point originale: (%.1f, %.1f)\\n\", p.x, p.y);\r\n\r\n    translate(&p, 3.0, 4.0);\r\n\r\n    printf(\"Point: (%.1f, %.1f)\\n\", p.x, p.y);\r\n    printf(\"Expected point: (5.0, 3.0)\\n\");\r\n    printf(\"Squared distance: %.1f\\n\",\r\n           squared_distance_from_origin(&p));\r\n    printf(\"Expected squared distance: 34.0\\n\");\r\n\r\n    return 0;\r\n}\r\n",
+      "description": "Trasla un punto tramite puntatore e calcola la distanza al quadrato dall’origine.",
       "sha": "e1a27a82a8fc2ac813ba194cb3376e6009ce3640",
       "videoIds": [],
       "candidateIds": [],
@@ -289,8 +291,8 @@
     },
     {
       "path": "puntatori/inserire numero in array.c",
-      "description": "Inserisce un numero in un array ordinato; copia di inserireX.c.",
       "code": "#include <stdio.h>\r\n\r\nint chiedi_un_numero (void);\r\nvoid print_array (int *a, int n);\r\n\r\nvoid print_array (int *a, int n) {\r\n\tprintf(\"[\");\r\n\tfor (int i=0; i<n; i++) {printf(\"%d\", a[i]);\r\n\t\tif (i<n-1) {printf(\",\");}}\r\n\t\tprintf(\"]\");\r\n\t}\r\n\r\nint  chiedi_un_numero (void)\r\n     { int numero;\r\n\t\t printf(\"scrivi il numero\\n\");\r\n\t\t scanf(\"%d\", &numero);\r\n\t\t return numero;\r\n\t\t }\r\n\r\nint main(int argc, char **argv)\r\n{\r\n\tint x;\r\n\tx= chiedi_un_numero();\r\n\t\r\n\tint v[]= {3,9,11,19,22,56,98};\r\n\tint w[8];\r\n\t\r\n\tint i; \r\n\tfor (i=0; i< 7; i++) {\r\n\t\tif (v[i]<x) {\r\n\t\t\tw[i]=v[i];\r\n\t\t} else {\r\n\t\t\tw[i] = x;  \r\n\t\t\tbreak;}\t\r\n\t}\r\n for (int j=i+1; j<8; j++) {\r\n\t\t\t\tw[j]=v[j-1];\r\n\t\t}\r\n\tprint_array (w, 8);\r\n\t\r\n\treturn 0;\r\n}\r\n\r\n",
+      "description": "Inserisce un numero in un array ordinato; copia di inserireX.c.",
       "sha": "4961cc4af62012b8d629545871cdd76362ec552e",
       "videoIds": [],
       "candidateIds": [],
@@ -300,8 +302,8 @@
     },
     {
       "path": "puntatori/puntatore_02.c",
-      "description": "Bozza di operazioni tramite puntatore; copia di puntatore_02.c.",
       "code": "#include <stdio.h>\r\n\r\nint main(int argc, char **argv)\r\n{\r\n\tint x. *p;\r\n\tprintf(\"Inserisci un numero\");\r\n\tscanf(\"%d\", &x);\r\n\tprintf(\"\\n il numero è: %d\",x);\r\n\t*p = 10; \r\n\t\r\n}\r\n\r\n",
+      "description": "Bozza di operazioni tramite puntatore; copia di puntatore_02.c.",
       "sha": "45a1eb3292c653b8893f49da4030ee049fc763a2",
       "videoIds": [],
       "candidateIds": [],
@@ -311,8 +313,8 @@
     },
     {
       "path": "puntatori/struct_mMa.c",
-      "description": "Calcola statistiche su un array usando una struttura allocata dinamicamente.",
       "code": "#include <stdio.h>\r\n#include <stdlib.h>\r\n\r\nstruct Statistics {\r\n    int minimum;\r\n    int maximum;\r\n    double average;\r\n};\r\n\r\nint find_min (int *a, int n);\r\nint find_min (int *a, int n) {\r\n\tint minimum = a[0];\r\n\tfor (int i = 1; i < n; i++) {\r\n\t\tif (a[i] < minimum) {\r\n\t\t\tminimum = a[i];\r\n\t\t}\r\n\t}\r\n\treturn minimum;\r\n}\r\n\t\r\nint find_max (int *a, int n);\r\nint find_max (int *a, int n) { \r\n\tint maximum = a[0];\r\n\tfor (int j = 1; j < n; j++) {\r\n\t\tif (a[j] > maximum) {\r\n\t\t\tmaximum = a[j];\r\n\t\t}\r\n\t}\r\n\treturn maximum;\r\n}\r\n\r\nint sum (int *a, int n);\r\nint sum (int *a, int n) {\r\n    int sum = 0;\r\n    for (int i=0; i<n; i++) {\r\n        sum = sum + a[i];\r\n    }\r\n    return sum;\r\n}\r\n\r\ndouble average (int sum, int n);\r\ndouble average (int sum, int n) {\r\n    double average = sum / n;\r\n    return average;\r\n}\r\n\r\nstruct Statistics *summarize(int *a, int n);\r\nstruct Statistics *summarize(int *a, int n) {\r\n\tstruct Statistics *result;\r\n\tif (n<=0) {\r\n        return NULL;\r\n    } else { \r\n        result=malloc(sizeof(struct Statistics));\r\n        if (result == NULL){ return NULL;}\r\n\r\n        result->minimum = find_min (a, n);\r\n        result->maximum = find_max (a, n);\r\n        result->average = average (sum(a,n), n);\r\n        \r\n        printf(\"minimun di a: %d\\n\", result->minimum);\r\n        printf(\"maximun di a %d\\n\", result->maximum);\r\n        printf(\"avarege di a %f\\n\", result->average);\r\n    }\r\n\treturn result;    \r\n}\r\n\r\nint main(void) {\r\n    int a[] = {4, 7, 1, 8};\r\n    struct Statistics *result;\r\n    result = summarize(a, 4);\r\n    if (result == NULL) {\r\n        printf(\"summarize returned NULL\\n\");\r\n        return 0;\r\n    }\r\n\r\n    printf(\"Minimum: %d (expected 1)\\n\", result->minimum);\r\n    printf(\"Maximum: %d (expected 8)\\n\", result->maximum);\r\n    printf(\"Average: %.1f (expected 5.0)\\n\", result->average);\r\n\r\n    free(result);\r\n    return 0;\r\n}\r\n",
+      "description": "Calcola statistiche su un array usando una struttura allocata dinamicamente.",
       "sha": "5553af87e489e604b92b644fe4ba51b334958cce",
       "videoIds": [],
       "candidateIds": [],
@@ -322,8 +324,8 @@
     },
     {
       "path": "questions.c",
-      "description": "Traccia ed esperimento sul calcolo del quoziente arrotondato per eccesso.",
       "code": "\r\n/*\r\n * \r\n\tWrite a function:\r\n\tint ceil_div(int a, int b);\r\n\tAssume that a >= 0 and b > 0. The function must return the smallest integer that is greater\r\n\tthan or equal to the mathematical value of a / b.\r\n\tExamples:\r\n\tceil_div(13, 5) returns 3\r\n\tceil_div(15, 5) returns 3\r\n\tceil_div(0, 5) returns 0\r\n\tWrite a complete program that defines the function and calls it from main for the three\r\n\texamples above\r\n * \r\n */\r\n\r\n#include <stdio.h>\r\n\r\nint main(){\r\n\tint a = 15, b = 5;\r\n\t\r\n\tprintf(\"%d\\n\", a / b + 1 * a % b);\r\n}\r\n",
+      "description": "Traccia ed esperimento sul calcolo del quoziente arrotondato per eccesso.",
       "sha": "7e681d5fe136b48646207913509c2e242beb53c0",
       "videoIds": [
         "QYifZiXzFb0"
@@ -337,8 +339,8 @@
     },
     {
       "path": "recursive_reverse.c",
-      "description": "Inverte un array scambiando gli estremi con chiamate ricorsive.",
       "code": "#include <stdio.h>\n\nvoid reverse_recursive(int a[], int start, int end){\n\tint temp;\n\tif (start >= end) {return ;}\n\ttemp = a[start];\n\ta[start] = a[end];\n\ta[end] = temp;\n//\tprintf(\"start indice/valore %d/%d -  end indice/valore %d/%d\\n\",start, a[start], end, a[end]);\n\treverse_recursive(a, ++start, --end);\n}\n\nint main(){\n\tint a[] = {1, 11, 22, 33, 44, 55};\n\tint length;\n\t\n\tlength = sizeof(a) / sizeof(a[0]);\n\tprintf(\"Lunghezza vettore: %d\\n\", length);\n\tfor (int i = 0; i < length; i++){\n\t\tprintf(\"L'elemento a[%d] e' uguale a: %d\\n\", i, a[i]);\n\t}\n\t\n\treverse_recursive(a, 0, length-1);\n\t\n\tprintf(\"Lunghezza vettore: %d\\n\", length);\n\tfor (int i = 0; i < length; i++){\n\t\tprintf(\"L'elemento a[%d] e' uguale a: %d\\n\", i, a[i]);\n\t}\n\t\n\t\n}\n",
+      "description": "Inverte un array scambiando gli estremi con chiamate ricorsive.",
       "sha": "73ca610895bedbdc832904b00a3827957da9a99b",
       "videoIds": [
         "OZoSvT1M7vo"
@@ -352,8 +354,8 @@
     },
     {
       "path": "reverse_array.c",
-      "description": "Inverte un array sul posto usando un ciclo e una variabile temporanea.",
       "code": "#include <stdio.h>\n\nvoid reverse_array(int a[], int n){\n/*\tloop x n\n\t\ttemp = a[2]\n\t\ta[2] = a[length-2]\n\t\ta[length-2] = temp \n*/\n\tint temp;\n\tfor (int i = 0; i < n/2; i++){\n\t\ttemp = a[i];\n\t\ta[i] = a[n-i-1];\n\t\ta[n-i-1] = temp;\n\t}\n}\n\nint main(){\n\tint a[] = {10};\n\tint length;\n\t\n\tlength = sizeof(a) / sizeof(a[0]);\n\tprintf(\"Lunghezza vettore: %d\\n\", length);\n\tfor (int i = 0; i < length; i++){\n\t\tprintf(\"L'elemento a[%d] e' uguale a: %d\\n\", i, a[i]);\n\t}\n\treverse_array(a, length);\n\tprintf(\"Dopo chiamata a funzione\\n\");\n\tfor (int i = 0; i < length; i++){\n\t\tprintf(\"L'elemento a[%d] e' uguale a: %d\\n\", i, a[i]);\n\t}\n\t\n}\n",
+      "description": "Inverte un array sul posto usando un ciclo e una variabile temporanea.",
       "sha": "28ce80f2ee62b067f513a0f17027b42b1ab12535",
       "videoIds": [
         "16XVUTSoNHw"
@@ -367,8 +369,8 @@
     },
     {
       "path": "square.c",
-      "description": "Definisce e richiama una funzione che calcola il quadrato di un intero.",
       "code": "\r\n#include <stdio.h>\r\n\r\nint square(int num ){\r\n\treturn num * num;\r\n}\r\n\r\nint main(){\r\n\tint number = 10;\r\n\tprintf(\"Il quadrato di %d e: %d\", number, square(number));\r\n}\r\n",
+      "description": "Definisce e richiama una funzione che calcola il quadrato di un intero.",
       "sha": "6538b3b96ce65e56251ff725c13b6fc2b6635f09",
       "videoIds": [
         "Lyag9IdSMWA"
@@ -382,8 +384,8 @@
     },
     {
       "path": "t.c",
-      "description": "Sperimenta la limitazione a un intervallo con l’operatore ternario.",
       "code": "\r\n#include <stdio.h>\r\n\r\n\r\nint main(){\r\n\tint lower = -2, upper = 4, x = -5;\r\n\tint r;\r\n//\tprintf(\"%d\\n\", ((x < lower && (r = lower)) || (x > upper && (r = upper)) || (r = x), r));\r\n\tprintf(\"%d\\n\", (r = (x < lower) ? lower : (x > upper) ? upper : x));\r\n}\r\n\r\n",
+      "description": "Sperimenta la limitazione a un intervallo con l’operatore ternario.",
       "sha": "5e76f2450850b2dd4e5325e2d73db8fce7306a37",
       "videoIds": [],
       "candidateIds": [
@@ -397,8 +399,8 @@
     },
     {
       "path": "test_01.c",
-      "description": "Variante di prova del massimo comune divisore ricorsivo.",
       "code": "#include <stdio.h>\n\nint gcd(int a, int b){\n\treturn b ? (a%b) ? gcd(b, a%b): b : b;\n}\n\nint main(){\n\tint a = 48, b = 18;\n//\tprintf (\"il resto di %d / %d è;: %d\\n\",a, b, a % b);\n\tprintf (\"il MCD di %d e %d è: %d\\n\",a, b, gcd(a, b));\n}\n",
+      "description": "Variante di prova del massimo comune divisore ricorsivo.",
       "sha": "b10b3cef392e65b9bb5818df7930f6f3fc93c54e",
       "videoIds": [],
       "candidateIds": [],
@@ -408,8 +410,8 @@
     },
     {
       "path": "test_array.c",
-      "description": "Confronta le modifiche a un array e a un intero passati a una funzione.",
       "code": "#include <stdio.h>\n\nvoid reverse_array(int a[], int n){\n\ta[0] = 9999;\n}\n\nvoid change_int(int param01){\n\tparam01 = 8888;\n}\n\t\nint main(){\n\tint a[] = {11, 22, 33};\n\tint length, numero;\n\t\n\tlength = sizeof(a) / sizeof(a[0]);\n\tfor (int i = 0; i < length; i++){\n\t\tprintf(\"L'elemento a[%d] e' uguale a: %d\\n\", i, a[i]);\n\t}\n\treverse_array(a, length);\n\tfor (int i = 0; i < length; i++){\n\t\tprintf(\"L'elemento a[%d] e' uguale a: %d\\n\", i, a[i]);\n\t}\n\t\n\tnumero = 5555;\n\tprintf(\"Numero prima della funizone: %d\\n\", numero);\n\tchange_int(numero);\n\tprintf(\"Numero  dopo della funizone: %d\\n\", numero);\n\t\n}\n",
+      "description": "Confronta le modifiche a un array e a un intero passati a una funzione.",
       "sha": "6979ffe6dee818cf178360ef0ba937ec51ff7ad8",
       "videoIds": [
         "469L5rt_QZU"
@@ -423,8 +425,8 @@
     },
     {
       "path": "week2_exe01_ceil_div.c",
-      "description": "Calcola la divisione intera arrotondata per eccesso con quoziente e resto.",
       "code": "\r\n#include <stdio.h>\r\n\r\nint ceil_div(int a, int b){\r\n\t return a / b  + 1 * !(a % b == 0);\r\n}\r\n\r\nint main(){\r\n\t\tint a = 16, b = 5;\r\n\t\t\r\n\t\tprintf(\"%d\\n\", ceil_div(a, b));\r\n}\r\n",
+      "description": "Calcola la divisione intera arrotondata per eccesso con quoziente e resto.",
       "sha": "1d7943b53cca99c33952ca6b217a7c9771ff70e5",
       "videoIds": [
         "AQFRNsOZQBA"
@@ -440,88 +442,88 @@
   "videos": [
     {
       "id": "l21_djDlNGk",
-      "url": "https://www.youtube.com/watch?v=l21_djDlNGk",
-      "title": "Addition to safe"
+      "title": "Addition to safe",
+      "url": "https://www.youtube.com/watch?v=l21_djDlNGk"
     },
     {
       "id": "74evBC0YTog",
-      "url": "https://www.youtube.com/watch?v=74evBC0YTog",
-      "title": "addition is safe"
+      "title": "addition is safe",
+      "url": "https://www.youtube.com/watch?v=74evBC0YTog"
     },
     {
       "id": "9AKRY1AN7H4",
-      "url": "https://www.youtube.com/watch?v=9AKRY1AN7H4",
-      "title": "recursive binary search"
+      "title": "recursive binary search",
+      "url": "https://www.youtube.com/watch?v=9AKRY1AN7H4"
     },
     {
       "id": "MuNYNl5i1X4",
-      "url": "https://www.youtube.com/watch?v=MuNYNl5i1X4",
-      "title": "Celsius 2 Fahrenheit 2 Kelvin in C"
+      "title": "Celsius 2 Fahrenheit 2 Kelvin in C",
+      "url": "https://www.youtube.com/watch?v=MuNYNl5i1X4"
     },
     {
       "id": "8A4Ab-2NkR0",
-      "url": "https://www.youtube.com/watch?v=8A4Ab-2NkR0",
-      "title": "clamp 01"
+      "title": "clamp 01",
+      "url": "https://www.youtube.com/watch?v=8A4Ab-2NkR0"
     },
     {
       "id": "oPbB8DQUXfg",
-      "url": "https://www.youtube.com/watch?v=oPbB8DQUXfg",
-      "title": "clamp 02"
+      "title": "clamp 02",
+      "url": "https://www.youtube.com/watch?v=oPbB8DQUXfg"
     },
     {
       "id": "ZJBa8K9lpNM",
-      "url": "https://www.youtube.com/watch?v=ZJBa8K9lpNM",
-      "title": "clamp 03"
+      "title": "clamp 03",
+      "url": "https://www.youtube.com/watch?v=ZJBa8K9lpNM"
     },
     {
       "id": "v44FojL7V5E",
-      "url": "https://www.youtube.com/watch?v=v44FojL7V5E",
-      "title": "digital root"
+      "title": "digital root",
+      "url": "https://www.youtube.com/watch?v=v44FojL7V5E"
     },
     {
       "id": "m6u-XPzuco0",
-      "url": "https://www.youtube.com/watch?v=m6u-XPzuco0",
-      "title": "helloWorld c 3 min"
+      "title": "helloWorld c 3 min",
+      "url": "https://www.youtube.com/watch?v=m6u-XPzuco0"
     },
     {
       "id": "cD22V_FKmT0",
-      "url": "https://www.youtube.com/watch?v=cD22V_FKmT0",
-      "title": "longest increasing run"
+      "title": "longest increasing run",
+      "url": "https://www.youtube.com/watch?v=cD22V_FKmT0"
     },
     {
       "id": "QYifZiXzFb0",
-      "url": "https://www.youtube.com/watch?v=QYifZiXzFb0",
-      "title": "questions week2"
+      "title": "questions week2",
+      "url": "https://www.youtube.com/watch?v=QYifZiXzFb0"
     },
     {
       "id": "OZoSvT1M7vo",
-      "url": "https://www.youtube.com/watch?v=OZoSvT1M7vo",
-      "title": "array03 reverse recursive"
+      "title": "array03 reverse recursive",
+      "url": "https://www.youtube.com/watch?v=OZoSvT1M7vo"
     },
     {
       "id": "16XVUTSoNHw",
-      "url": "https://www.youtube.com/watch?v=16XVUTSoNHw",
-      "title": "array02 reverse"
+      "title": "array02 reverse",
+      "url": "https://www.youtube.com/watch?v=16XVUTSoNHw"
     },
     {
       "id": "Lyag9IdSMWA",
-      "url": "https://www.youtube.com/watch?v=Lyag9IdSMWA",
-      "title": "squaring a number"
+      "title": "squaring a number",
+      "url": "https://www.youtube.com/watch?v=Lyag9IdSMWA"
     },
     {
       "id": "469L5rt_QZU",
-      "url": "https://www.youtube.com/watch?v=469L5rt_QZU",
-      "title": "array01 test"
+      "title": "array01 test",
+      "url": "https://www.youtube.com/watch?v=469L5rt_QZU"
     },
     {
       "id": "AQFRNsOZQBA",
-      "url": "https://www.youtube.com/watch?v=AQFRNsOZQBA",
-      "title": "ceil div"
+      "title": "ceil div",
+      "url": "https://www.youtube.com/watch?v=AQFRNsOZQBA"
     },
     {
       "id": "rrXjcdGDl3U",
-      "url": "https://www.youtube.com/watch?v=rrXjcdGDl3U",
-      "title": "somma con puntatori ispezione"
+      "title": "somma con puntatori ispezione",
+      "url": "https://www.youtube.com/watch?v=rrXjcdGDl3U"
     }
   ]
 }
